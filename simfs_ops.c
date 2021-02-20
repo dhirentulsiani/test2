@@ -42,10 +42,11 @@ createfile(char *filesystem, char *filename)
 	// Open file in read mode, do error checking
     // Loop through using fread with one femerry strUCT. keep count of current position. Once empty femerry found
 	// Close readmode file do error checking
+	//what if nit in firstt block
 	//fprintf(stdout, "hello");
 	
 	if (strnlen(filename, 13) > 11) {
-		fprintf(stderr, "nme toolong");
+		fprintf(stderr, "nme toolong\n");
 	}
 	int i;
 	FILE *fp = openfs(filesystem, "r");
@@ -71,6 +72,16 @@ createfile(char *filesystem, char *filename)
 	}
 	if (count == -20) {
 		fprintf(stderr, "No spce\n");
-		}
+	}
+	//close fk
+	closefs(filesystem);
+	fentry newfile;
+	strcpy(newfile.name, filename);
+	newfile.size = 0;
+	newfile.firstblock = -1;
+	//what if notnin firat bloxk
+	FILE *writefile = openfs(filesystem, 'r+');
+	fseek(writefile, sizeof(fentry) * count, SEEK_SET);
+	fwrite(newfile, sizeof(fentry), 1, writefile);
 	
 }
