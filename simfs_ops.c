@@ -134,11 +134,11 @@ void writefile(char *filesystem, char *filename, int start, int length) {
 	//if stdin is empty
 	
 	//printf("%s%s%d%d", filesystem, filename, start, length);
-	int len = strtol(argv[optind + 2], &end2, 10);
-    	char word[len];
-    	if (fread(word, sizeof(char), len, stdin) > len) {
+	
+    	char word[length];
+    	if (fread(word, sizeof(char), length, stdin) > length) {
     		fprintf(stderr, "stdin not valid argunebts\n");
-    		exit(1)
+    		exit(1);
     		}
 	FILE *fp = openfs(filesystem, "r+");
 	int i;
