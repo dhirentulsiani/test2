@@ -58,7 +58,6 @@ createfile(char *filesystem, char *filename)
 				}
 			}
 	
-	f.name = "gello";
-	printf(f.name);
+	printf("%d", f.size);
 	}
 }
