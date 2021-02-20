@@ -74,7 +74,7 @@ createfile(char *filesystem, char *filename)
 	if (count == -20) {
 		fprintf(stderr, "No spce\n");
 		closefs(fp);
-		exit(l);
+		exit(1);
 	}
 	//close fk
 	closefs(fp);
