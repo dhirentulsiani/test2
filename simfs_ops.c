@@ -46,7 +46,7 @@ createfile(char *filesystem, char *filename)
 	
 	if (strnlen(filename, 13) > 11) {
 		fprintf(stderr, "nme toolong");
-	
+	}
 	int i;
 	FILE *fp = openfs(filesystem, "r");
 	fentry f;
