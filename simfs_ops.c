@@ -196,11 +196,11 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     }
     
     int countBlocks = 0;
-    fnode freeNode[numBlocks];
-    for (i = 0, i < MAXBLOCKS, i++) {
+    //fnode freeNode[numBlocks];
+    for (i = 0; i < MAXBLOCKS; i++;) {
     	if (fnodes[i].blockindex < 0) {
-    		freeNode[count] = fnodes[i];
-    		count++
+    		//freeNode[count] = fnodes[i];
+    		count++;
     	}
     	if (count == numBlocks) {break;}
     }
