@@ -43,7 +43,7 @@ createfile(char *filesystem, char *filename)
     // Loop through using fread with one femerry strUCT. keep count of current position. Once empty femerry found
 	// Close readmode file do error checking
 	int i;
-	FILE *fp = openfs(filename, "r");
+	FILE *fp = openfs(filesystem, "r");
 	fentry f;
 	for (i = 0; i < MAXFILES; i++) {
 		if ((fread(&f, sizeof(fentry), 1, fp)) == 0) {
