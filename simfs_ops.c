@@ -178,20 +178,20 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     	while (curr != -1) {
     		prev = curr;
     		curr = fnodes[prev].nextblock;
-    		count++
+    		count++;
     	}
-    	int numbytes = f.size - (BLOCKSIZE * count)
+    	int numbytes = f.size - (BLOCKSIZE * count);
     	if (numbytes < 0) {
     	fprintf(stderr, "Error: numbytes wrong\n");
         closefs(fp);
         exit(1);
     	}
-    	freebytesneeded -= numbytes
+    	freebytesneeded -= numbytes;
     }
 	
     printf("%d", freebytesneeded);
 		
 		
 		
-	close(fp);
+	closefs(fp);
 }
