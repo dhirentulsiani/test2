@@ -58,6 +58,6 @@ createfile(char *filesystem, char *filename)
 				}
 			}
 	
-	printf("%d", f.size);
+	fprintf(stdout, "hello");
 	}
 }
