@@ -132,7 +132,7 @@ fentry findfile(char *fsystem, char *fname) {
 void writefile(char *filesystem, char *filename, int start, int length) {
 	
 	//printf("%s%s%d%d", filesystem, filename, start, length);
-	FILE *fp = openfs(filesystem, "r");
+	FILE *fp = openfs(filesystem, "r+");
 	int i;
 	int count = -20;
 	fentry f;
@@ -149,10 +149,49 @@ void writefile(char *filesystem, char *filename, int start, int length) {
 	}
 	
 	if (count == -20) {
-		fprintf(stderr, "No spce\n");
+		fprintf(stderr, "file not exisy\n");
 		closefs(fp);
 		exit(1);
 	}
 	
-	printf("%sn\n", f.name);
+	//printf("%s\n", f.name);
+	if (start > f.size) {
+		fprintf(stderr, "start too large\n");
+		closefs(fp);
+		exit(1);
+	}
+	
+	fseek(fp, sizeof(fentry) * MAXFILES, SEEK_SET);
+	fnode fnodes[MAXBLOCKS];
+	if ((fread(fnodes, sizeof(fnode), MAXBLOCKS, fp)) == 0) {
+        fprintf(stderr, "Error: could not read fnodes\n");
+        closefs(fp);
+        exit(1);
+    }
+    
+    int freebytesneeded = (sizeof(char) * length) - (f.size - start);
+    if (f.firstblock != -1) {
+    	//find last node, calculate bytes used
+    	int count = -1;
+    	int prev = -1;
+    	int curr = f.firstblock;
+    	while (curr != -1) {
+    		prev = curr;
+    		curr = fnodes[prev].nextblock;
+    		count++
+    	}
+    	int numbytes = f.size - (BLOCKSIZE * count)
+    	if (numbytes < 0) {
+    	fprintf(stderr, "Error: numbytes wrong\n");
+        closefs(fp);
+        exit(1);
+    	}
+    	freebytesneeded -= numbytes
+    }
+	
+    printf("%d", freebytesneeded);
+		
+		
+		
+	close(fp);
 }
