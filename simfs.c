@@ -84,13 +84,8 @@ main(int argc, char **argv)
     	}
     	
     	char *end1, *end2;
-    	int len = strtol(argv[optind + 2], &end2, 10);
-    	char word[len];
-    	if (fread(word, sizeof(char), len, stdin) != len) {
-    		fprintf(stderr, "stdin not valid argunebts\n");
-    		break;
-    		}
-    	writefile(fsname, argv[optind], strtol(argv[optind + 1], &end1, 10), strtol(argv[optind + 2], &end2, 10), word);
+    	
+    	writefile(fsname, argv[optind], strtol(argv[optind + 1], &end1, 10), strtol(argv[optind + 2], &end2, 10));
     		
     	//fprintf(stderr, "Error: writefile not yet implemented\n");
         break;
