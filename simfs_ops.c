@@ -210,7 +210,7 @@ void writefile(char *filesystem, char *filename, int start, int length) {
         closefs(fp);
         exit(1);
     }
-    
+    printf("%d\n", numBlocks);
     
 		
 		
