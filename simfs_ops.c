@@ -129,7 +129,9 @@ fentry findfile(char *fsystem, char *fname) {
 		}
 	}*/
 
-void writefile(char *filesystem, char *filename, int start, int length) {
+void writefile(char *filesystem, char *filename, int start, int length, char *towrite) {
+	
+	//if stdin is empty
 	
 	//printf("%s%s%d%d", filesystem, filename, start, length);
 	FILE *fp = openfs(filesystem, "r+");
@@ -196,10 +198,10 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     }
     
     int countBlocks = 0;
-    //fnode freeNode[numBlocks];
+    fnode freeNode[numBlocks];
     for (i = 0; i < MAXBLOCKS; i++) {
     	if (fnodes[i].blockindex < 0) {
-    		//freeNode[count] = fnodes[i];
+    		freeNode[countBlocks] = fnodes[i];
     		countBlocks++;
     	}
     	if (countBlocks == numBlocks) {break;}
@@ -212,7 +214,20 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     }
     printf("%d\n", numBlocks);
     
-		
+    int startBlockNum= (start * sizeof(char)) / BLOCKSIZE;
+    printf("strtblock: %d", startBlockNum);
+    if (startBlockNum > numBlocks) {
+   		fprintf(stderr, "Error: startblock wrobf\n");
+        closefs(fp);
+        exit(1);
+    }
+    fnode cur = fnodes[f.firstblock]
+    while(startBlockNum != 0) {
+    	cur = fnodes[cur.nextblock];
+    	startBlockNum--;
+    }
+    fseek(fp, (cur.blockindex * B) + (start % BLOCKSIZE), SEEK_SET);
+	//fwrite(const void *__buf, size_t __size, size_t __count, FILE *__fp);
 		
 		
 	closefs(fp);
