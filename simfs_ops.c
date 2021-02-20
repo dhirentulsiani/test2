@@ -82,7 +82,7 @@ createfile(char *filesystem, char *filename)
 	newfile.firstblock = -1;
 	
 	//what if notnin firat bloxk
-	FILE *writefile = openfs(filesystem, 'a');
+	FILE *writefile = openfs(filesystem, "a");
 	fseek(writefile, sizeof(fentry) * count, SEEK_SET);
 	fwrite(&newfile, sizeof(fentry), 1, writefile);
 	
