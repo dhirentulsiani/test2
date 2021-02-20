@@ -197,15 +197,15 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     
     int countBlocks = 0;
     //fnode freeNode[numBlocks];
-    for (i = 0; i < MAXBLOCKS; i++;) {
+    for (i = 0; i < MAXBLOCKS; i++) {
     	if (fnodes[i].blockindex < 0) {
     		//freeNode[count] = fnodes[i];
-    		count++;
+    		countBlocks++;
     	}
-    	if (count == numBlocks) {break;}
+    	if (countBlocks == numBlocks) {break;}
     }
     
-    if (count != numBlocks) {
+    if (countBlocks != numBlocks) {
     	fprintf(stderr, "Error: nofree space\n");
         closefs(fp);
         exit(1);
