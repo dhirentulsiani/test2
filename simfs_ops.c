@@ -42,7 +42,7 @@ createfile(char *filesystem, char *filename)
 	// Open file in read mode, do error checking
     // Loop through using fread with one femerry strUCT. keep count of current position. Once empty femerry found
 	// Close readmode file do error checking
-	fprintf(stdout, "hello");
+	//fprintf(stdout, "hello");
 	int i;
 	FILE *fp = openfs(filesystem, "r");
 	fentry f;
@@ -54,6 +54,7 @@ createfile(char *filesystem, char *filename)
 			} 
 		else {
 			// can the input ever be emty
+			fprintf(stdout, "hello");
 			if (f.name[0] == '\0' && f.size == 0 && f.firstblock == -1) {
 				break;
 				}
