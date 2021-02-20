@@ -47,7 +47,7 @@ createfile(char *filesystem, char *filename)
 	
 	if (strnlen(filename, 13) > 11) {
 		fprintf(stderr, "nme toolong\n");
-		exit(1)
+		exit(1);
 	}
 	int i;
 	FILE *fp = openfs(filesystem, "r");
@@ -74,7 +74,7 @@ createfile(char *filesystem, char *filename)
 	if (count == -20) {
 		fprintf(stderr, "No spce\n");
 		closefs(fp);
-		exit(l)
+		exit(l);
 	}
 	//close fk
 	closefs(fp);
@@ -92,7 +92,7 @@ createfile(char *filesystem, char *filename)
 	if (fwrite(&newfile, sizeof(fentry), 1, writefile) < 1) {
 		fprintf(stderr, "sum thing wong\n");
 		closefs(writefile);
-		exit(1)
+		exit(1);
 		}
 	
 }
