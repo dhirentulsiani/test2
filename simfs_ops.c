@@ -140,6 +140,7 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     		fprintf(stderr, "stdin not valid argunebts\n");
     		exit(1);
     		}
+    printf("word is: %s\n", word);
 	FILE *fp = openfs(filesystem, "r+");
 	int i;
 	int count = -20;
@@ -243,6 +244,7 @@ void writefile(char *filesystem, char *filename, int start, int length) {
 	cur = fnodes[cur.nextblock];
     	x++;
     }
+    printf("stroke\n"
 	}
 	
 	
