@@ -57,5 +57,8 @@ createfile(char *filesystem, char *filename)
 				break;
 				}
 			}
+	
+	f.name = "gello";
+	printf(f.name);
 	}
 }
