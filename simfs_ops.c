@@ -189,7 +189,7 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     	freebytesneeded -= numbytes;
     }
 	
-    printf("%d %d\n", freebytesneeded, sizeof(char));
+    printf("%d %d\n", freebytesneeded, (int) sizeof(char));
 		
 		
 		
