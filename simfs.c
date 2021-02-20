@@ -84,7 +84,7 @@ main(int argc, char **argv)
     	}
     	
     	char *end1, *end2;
-    	writefile(fsname, argv[optind], strtol(argv[optind + 1], *end1, 10), strtol(argv[optind + 2], *end2, 10));
+    	writefile(fsname, argv[optind], strtol(argv[optind + 1], &end1, 10), strtol(argv[optind + 2], &end2, 10));
     		
     	//fprintf(stderr, "Error: writefile not yet implemented\n");
         break;
