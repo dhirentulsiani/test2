@@ -142,7 +142,7 @@ void writefile(char *filesystem, char *filename, int start, int length) {
         closefs(fp);
         exit(1);
 			} 
-		else if (strncmp(f.name, filename, 12)) {
+		else if (strncmp(f.name, filename, 12) == 0) {
 			count = i;
 			break;
 			}
@@ -154,5 +154,5 @@ void writefile(char *filesystem, char *filename, int start, int length) {
 		exit(1);
 	}
 	
-	printf("%s.n\n", f.name);
+	printf("%sn\n", f.name);
 }
