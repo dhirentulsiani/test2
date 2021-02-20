@@ -1,4 +1,4 @@
-typedef struct file_entry {
+﻿typedef struct file_entry {
   char name[12];          // An empty name means the fentry is not in use.
   unsigned short size;
   short firstblock;       // A -1 indicates that no file blocks have been allocated.
@@ -12,4 +12,4 @@ typedef struct file_node {
 
 #define MAXFILES  8
 #define MAXBLOCKS 32
-#define BLOCKSIZE 128
+#define BLOCKSIZE 26
