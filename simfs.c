@@ -61,11 +61,7 @@ main(int argc, char **argv)
         printfs(fsname);
         break;
     case 2: /* createfile */
-        fprintf(stderr, "Error: createfile not yet implemented\n");
-        break;
-    case 3: /* readfile */
-      
-    	if (argc != 5) {
+        if (argc != 5) {
     		fprintf(stderr, "Wrong number of argunebts");
     		break;
     		}
@@ -73,8 +69,14 @@ main(int argc, char **argv)
     	//printf(fileName);
     	
     	createfile(fsname, fileName);
-    	//fprintf(stderr, "Error: readfile not yet implemented\n");
+    	
+    	//fprintf(stderr, "Error: createfile not yet implemented\n");
         //break;
+    case 3: /* readfile */
+      
+    	
+    	fprintf(stderr, "Error: readfile not yet implemented\n");
+        break;
     case 4: /* writefile */
         fprintf(stderr, "Error: writefile not yet implemented\n");
         break;
