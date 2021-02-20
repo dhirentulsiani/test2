@@ -228,7 +228,7 @@ void writefile(char *filesystem, char *filename, int start, int length) {
         exit(1);
     }*/
     if (f.firstblock >= 0) {
-    fnode cur = fnodes[f.firstblock] // what if fistblock -1
+    fnode cur = fnodes[f.firstblock]; // what if fistblock -1
     while(startBlockNum != 0) {
     	cur = fnodes[cur.nextblock];
     	startBlockNum--;
@@ -237,9 +237,9 @@ void writefile(char *filesystem, char *filename, int start, int length) {
 	fwrite(word, sizeof(char), BLOCKSIZE - (start % BLOCKSIZE), fp);
 	cur = fnodes[cur.nextblock];
     int x = 0;
-    while (curr.blockindex > 0) {
+    while (cur.blockindex > 0) {
     	fseek(fp, (cur.blockindex * BLOCKSIZE), SEEK_SET);
-	fwrite(word[(BLOCKSIZE - (start % BLOCKSIZE) + (BLOCKSIZE * x)], sizeof(char), BLOCKSIZE, fp);
+	fwrite(word[(BLOCKSIZE - (start % BLOCKSIZE)) + (BLOCKSIZE * x)], sizeof(char), BLOCKSIZE, fp);
 	cur = fnodes[cur.nextblock];
     	x++;
     }
