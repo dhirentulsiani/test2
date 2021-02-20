@@ -11,5 +11,5 @@ typedef struct file_node {
 
 
 #define MAXFILES  8
-#define MAXBLOCKS 200
-#define BLOCKSIZE 1
+#define MAXBLOCKS 32
+#define BLOCKSIZE 128

@@ -60,6 +60,11 @@ createfile(char *filesystem, char *filename)
         closefs(fp);
         exit(1);
 			} 
+		else if (strncmp(f.name, filename, 12) {
+			fprintf(stderr, "Error: Duplicate name\n");
+			close(fp);
+			exit(1)
+			}
 		else {
 			// can the input ever be emty
 			//fprintf(stdout, "hello");
@@ -116,7 +121,38 @@ write the finished fentryv(with correct size)
 
 */
 
+/*
+fentry findfile(char *fsystem, char *fname) {
+	int i;
+	for (i = 0, i < MAXFILES, i++) {
+			
+		}
+	}*/
+
 void writefile(char *filesystem, char *filename, int start, int length) {
 	
-	printf("%s%s%d%d", filesystem, filename, start, length);
+	//printf("%s%s%d%d", filesystem, filename, start, length);
+	FILE *fp = openfs(filesystem, "r");
+	int i;
+	int count = -20;
+	fentry f;
+	for (i = 0; i < MAXFILES; i++) {
+		if ((fread(&f, sizeof(fentry), 1, fp)) == 0) {
+				fprintf(stderr, "Error: could not read file entries\n");
+        closefs(fp);
+        exit(1);
+			} 
+		else if (strncmp(f.name, filename, 12) {
+			count = i;
+			break;
+			}
 	}
+	
+	if (count == -20) {
+		fprintf(stderr, "No spce\n");
+		closefs(fp);
+		exit(1);
+	}
+	
+	printf("%\n", f.name);
+}
