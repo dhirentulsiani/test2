@@ -190,6 +190,28 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     }
 	
     printf("%d %d\n", freebytesneeded, (int) sizeof(char));
+    int numBlocks = freebytesneeded / BLOCKSIZE;
+    if (freebytesneeded % BLOCKSIZE != 0) {
+    		numBlocks += 1;
+    }
+    
+    int countBlocks = 0;
+    fnode freeNode[numBlocks];
+    for (i = 0, i < MAXBLOCKS, i++) {
+    	if (fnodes[i].blockindex < 0) {
+    		freeNode[count] = fnodes[i];
+    		count++
+    	}
+    	if (count == numBlocks) {break;}
+    }
+    
+    if (count != numBlocks) {
+    	fprintf(stderr, "Error: nofree space\n");
+        closefs(fp);
+        exit(1);
+    }
+    
+    
 		
 		
 		
