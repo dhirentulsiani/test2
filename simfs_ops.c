@@ -206,9 +206,11 @@ void writefile(char *filesystem, char *filename, int start, int length) {
     
     int countBlocks = 0;
     fnode freeNode[numBlocks];
+    int indexofreeNode[numBlocks];
     for (i = 0; i < MAXBLOCKS; i++) {
     	if (fnodes[i].blockindex < 0) {
     		freeNode[countBlocks] = fnodes[i];
+    		indexofreeNode[countBlocks] = i;
     		countBlocks++;
     	}
     	if (countBlocks == numBlocks) {break;}
@@ -244,8 +246,22 @@ void writefile(char *filesystem, char *filename, int start, int length) {
 	cur = fnodes[cur.nextblock];
     	x++;
     }
-    printf("stroke\n"
+    printf("stroke\n");
 	}
+	for (i=0; i < numBlocks - 1; i++) {
+		freeNode[i].blockindex = indexofreeNode[i];
+		
+		if (i != numBlocks) {freeNode[i].nextblock = indexofreeNode[i+1];}
+		
+		fseek(fp, (indexofreeNode[i] * BLOCKSIZE), SEEK_SET);
+		fwrite(word[freebytesneeded + (i * BLOCKSIZE)], sizeof(char), BLOCKSIZE, fp);
+	}
+	freeNode[numBlocks].blockindex = indexofreeNode[numBlocks];
+	fseek(fp, (indexofreeNode[countBlocks] * BLOCKSIZE), SEEK_SET);
+	fwrite(word[freebytesneeded + (i * BLOCKSIZE)], sizeof(char), length - , fp);
+	//write all freenodes infile
+	
+	
 	
 	
 	closefs(fp);
