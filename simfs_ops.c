@@ -77,7 +77,7 @@ createfile(char *filesystem, char *filename)
 	closefs(fp);
 	
 	fentry newfile;
-	strcpy(newfile.name, filename);
+	strncpy(newfile.name, filename, 12);
 	newfile.size = 0;
 	newfile.firstblock = -1;
 	
