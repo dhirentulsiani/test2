@@ -60,7 +60,7 @@ createfile(char *filesystem, char *filename)
         closefs(fp);
         exit(1);
 			} 
-		else if (strncmp(f.name, filename, 12)) {
+		else if (strncmp(f.name, filename, 12) == 0) {
 			fprintf(stderr, "Error: Duplicate name\n");
 			closefs(fp);
 			exit(1);
