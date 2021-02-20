@@ -1,4 +1,4 @@
-/* This program simulates a file system within an actual file.  The
+﻿/* This program simulates a file system within an actual file.  The
  * simulated file system has only one directory, and two types of
  * metadata structures defined in simfstypes.h.
  */
@@ -64,8 +64,17 @@ main(int argc, char **argv)
         fprintf(stderr, "Error: createfile not yet implemented\n");
         break;
     case 3: /* readfile */
-        fprintf(stderr, "Error: readfile not yet implemented\n");
-        break;
+      
+    	if (argc != 5) {
+    		fprintf(stderr, "Wrong number of argunebts");
+    		break;
+    		}
+    	char *fileName = argv[optind];
+    	//printf(fileName);
+    	
+    	createfile(fsname, fileName);
+    	//fprintf(stderr, "Error: readfile not yet implemented\n");
+        //break;
     case 4: /* writefile */
         fprintf(stderr, "Error: writefile not yet implemented\n");
         break;
