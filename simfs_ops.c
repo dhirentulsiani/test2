@@ -86,6 +86,8 @@ createfile(char *filesystem, char *filename)
 	//what if notnin firat bloxk
 	FILE *writefile = openfs(filesystem, "r+");
 	fseek(writefile, sizeof(fentry) * count, SEEK_SET);
-	fwrite(&newfile, sizeof(fentry), 1, writefile);
+	if (fwrite(&newfile, sizeof(fentry), 1, writefile) < 1) {
+		fprintf(stderr, "sum thing wong\n");
+		}
 	
 }
