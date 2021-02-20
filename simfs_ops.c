@@ -84,7 +84,7 @@ createfile(char *filesystem, char *filename)
 	printf("%d\n", count);
 	printf("%s\n", newfile.name);
 	//what if notnin firat bloxk
-	FILE *writefile = openfs(filesystem, "a");
+	FILE *writefile = openfs(filesystem, "r+");
 	fseek(writefile, sizeof(fentry) * count, SEEK_SET);
 	fwrite(&newfile, sizeof(fentry), 1, writefile);
 	
