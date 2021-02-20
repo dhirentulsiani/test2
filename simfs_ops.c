@@ -62,7 +62,7 @@ createfile(char *filesystem, char *filename)
 			} 
 		else {
 			// can the input ever be emty
-			fprintf(stdout, "hello");
+			//fprintf(stdout, "hello");
 			if (f.name[0] == '\0' && f.size == 0 && f.firstblock == -1) {
 				count = i;
 				break;
@@ -84,8 +84,8 @@ createfile(char *filesystem, char *filename)
 	newfile.size = 0;
 	newfile.firstblock = -1;
 	
-	printf("%d\n", count);
-	printf("%s\n", newfile.name);
+	//printf("%d\n", count);
+	//printf("%s\n", newfile.name);
 	//what if notnin firat bloxk
 	FILE *writefile = openfs(filesystem, "r+");
 	fseek(writefile, sizeof(fentry) * count, SEEK_SET);
@@ -96,3 +96,27 @@ createfile(char *filesystem, char *filename)
 		}
 	
 }
+/*
+Writefile docs
+possible errors:
+start > file size
+not ennough free blocks available.
+stdin less than len argunent,
+number of arguments not correct
+file not found error.
+
+Start by finding filentry, check start > filesize,
+calculate if eniugh free blocks availabke,
+fread stdin to a char array, make sure length >= fread.
+if firstblock != -1, fill up current block, else/then find next availabke block, fill it up, until all has been written. Make sure to alwys be updating and writing fnodes, remember to update first node if needed
+
+
+write the finished fentryv(with correct size)
+
+
+*/
+
+void writefile(char *filesystem, char *filename, int start, int length) {
+	
+	printf("%s%s%d%d", filesystem, filename, start, length)
+	}

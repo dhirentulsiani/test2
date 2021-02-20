@@ -78,7 +78,13 @@ main(int argc, char **argv)
     	fprintf(stderr, "Error: readfile not yet implemented\n");
         break;
     case 4: /* writefile */
-        fprintf(stderr, "Error: writefile not yet implemented\n");
+        if (argc != 7) {
+    		fprintf(stderr, "Wrong number of argunebts\n");
+    		break;
+    		}
+    	writefile(fsname, argv[optind], argv[optind + 1], argv[optind + 2);
+    		
+    	//fprintf(stderr, "Error: writefile not yet implemented\n");
         break;
     case 5: /* deletefile */
         fprintf(stderr, "Error: deletefile not yet implemented\n");

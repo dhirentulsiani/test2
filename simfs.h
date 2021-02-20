@@ -9,3 +9,4 @@ void initfs(char *);
 FILE *openfs(char *filename, char *mode);
 void closefs(FILE *fp);
 void createfile(char *filesystem, char *filename);
+void writefile(char *filesystem, char *filename, int start, int length);
