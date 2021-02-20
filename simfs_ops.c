@@ -62,8 +62,8 @@ createfile(char *filesystem, char *filename)
 			} 
 		else if (strncmp(f.name, filename, 12)) {
 			fprintf(stderr, "Error: Duplicate name\n");
-			close(fp);
-			exit(1)
+			closefs(fp);
+			exit(1);
 			}
 		else {
 			// can the input ever be emty
