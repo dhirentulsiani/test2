@@ -71,7 +71,7 @@ main(int argc, char **argv)
     	createfile(fsname, fileName);
     	
     	//fprintf(stderr, "Error: createfile not yet implemented\n");
-        //break;
+        break;
     case 3: /* readfile */
       
     	fprintf(stderr, "wtf");
