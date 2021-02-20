@@ -43,9 +43,15 @@ createfile(char *filesystem, char *filename)
     // Loop through using fread with one femerry strUCT. keep count of current position. Once empty femerry found
 	// Close readmode file do error checking
 	//fprintf(stdout, "hello");
+	
+	if (strnlen(filename, 13) > 11) {
+		fprintf(stderr, "nme toolong");
+	
 	int i;
 	FILE *fp = openfs(filesystem, "r");
 	fentry f;
+	int count = -20;
+	//int foundspace;
 	for (i = 0; i < MAXFILES; i++) {
 		if ((fread(&f, sizeof(fentry), 1, fp)) == 0) {
 				fprintf(stderr, "Error: could not read file entries\n");
@@ -56,10 +62,15 @@ createfile(char *filesystem, char *filename)
 			// can the input ever be emty
 			fprintf(stdout, "hello");
 			if (f.name[0] == '\0' && f.size == 0 && f.firstblock == -1) {
+				count = i;
 				break;
 				}
 			}
 	
-	fprintf(stdout, "hello");
+	
 	}
+	if (count == -20) {
+		fprintf(stderr, "No spce\n");
+		}
+	
 }
