@@ -62,7 +62,7 @@ main(int argc, char **argv)
         break;
     case 2: /* createfile */
         if (argc != 5) {
-    		fprintf(stderr, "Wrong number of argunebts");
+    		fprintf(stderr, "Wrong number of argunebts\n");
     		break;
     		}
     	char *fileName = argv[optind];
@@ -74,7 +74,7 @@ main(int argc, char **argv)
         //break;
     case 3: /* readfile */
       
-    	
+    	fprintf(stderr, "wtf");
     	fprintf(stderr, "Error: readfile not yet implemented\n");
         break;
     case 4: /* writefile */
