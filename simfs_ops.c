@@ -118,5 +118,5 @@ write the finished fentryv(with correct size)
 
 void writefile(char *filesystem, char *filename, int start, int length) {
 	
-	printf("%s%s%d%d", filesystem, filename, start, length)
+	printf("%s%s%d%d", filesystem, filename, start, length);
 	}
